@@ -1,0 +1,15 @@
+version: '2'
+services:
+  coffee_order_service:
+    build: ./coffee-order-service
+    container_name: coffee_order_service
+    ports:
+     - "8124:8124"
+    links:
+      - db1:db1
+    depends_on:
+     - db1
+    environment:
+     - DATABASE_HOST=db1
+  db1:
+    build: ./db
